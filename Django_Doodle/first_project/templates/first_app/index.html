@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django_LevelTwo</title>
+    <link rel="stylesheet" href="{% static 'css/myStyle.css' %}">
+    
+</head>
+<body>
+    <h1>Hi welcome to django level two</h1>
+    <h2>Here are your access records:</h2>
+    <!-- <img src="{% static 'images/LuffyGear5.JPG' %}" alt="Oh oh, couldn't find the img"> -->
+
+    <div class="djangoTwo">
+        {% if access_records %}
+        <table>
+            <thead>
+                <th>Site Name</th>
+                <th>Date Accessed</th>
+            </thead>
+            {% for acc in access_records %}
+            <tr>
+                <td>{{ acc.name }}</td>
+                <td>{{ acc.date }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+        <p>NO ACCESS RECORDS FOUND!</p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

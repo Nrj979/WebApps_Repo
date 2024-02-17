@@ -1,0 +1,18 @@
+{% extends 'basic_app/basic_app_base.html' %}
+    {% block title_block %}
+        School List
+    {% endblock %}
+    {% block body_block %}
+        <h1>Here are the list of SCHOOLS!</h1>
+        <ol>
+            {% for school in schools %}
+                <h2><li><a href="{{school.id}}">{{ school.name }}</a></li></h2>
+            {% endfor %}
+        </ol>
+        <h3>Do you want to add more schools?</h3>
+        <!-- <a href="{% url 'basic_app:SclCreate' %}">Click here to CREATE school</a> -->
+        <div class="container-fluid">
+            <p><a class="btn btn-success" href="{% url 'basic_app:SclCreate' %}">Add School</a></p>
+        </div>
+
+    {% endblock %}

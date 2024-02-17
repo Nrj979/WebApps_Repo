@@ -1,0 +1,258 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+              key: "",
+              v: "weekly",
+              // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+              // Add other bootstrap parameters as needed, using camel case.
+            });
+          </script>
+          <!-- <script async
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjGZMcRaqX3WFFTX9fTCjfnrgRrVAsg3A&loading=async&libraries=places&callback=initMap">
+      </script> -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxuWkiItG0F0A7rmQ_Tn8Umgvsl3SozMM&libraries=places"></script>
+
+     <script>
+        // Initialize Google Maps Places Autocomplete for start location
+        function initStartAutocomplete() {
+            var inputStart = document.getElementById('start-route');
+            var autocompleteStart = new google.maps.places.Autocomplete(inputStart);
+        }
+    
+        // Initialize Google Maps Places Autocomplete for end location
+        function initEndAutocomplete() {
+            var inputEnd = document.getElementById('end-route');
+            var autocompleteEnd = new google.maps.places.Autocomplete(inputEnd);
+        }
+    
+        // Call initStartAutocomplete() and initEndAutocomplete() when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initStartAutocomplete();
+            initEndAutocomplete();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+         $('.home-page').click(function(){
+            window.location.assign("{% url 'partner_home_page' %}")
+        })
+    })
+      </script>
+    
+      <!-- <script>
+        // Initialize and add the map
+            let map;
+
+            async function initMap() {
+            // The location of Uluru
+            const position = { lat: -25.344, lng: 131.031 };
+            // Request needed libraries.
+            //@ts-ignore
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+            // The map, centered at Uluru
+            map = new Map(document.getElementById("start-route"), {
+                zoom: 4,
+                center: position,
+                mapId: "DEMO_MAP_ID",
+            });
+
+            // The marker, positioned at Uluru
+            const marker = new AdvancedMarkerElement({
+                map: map,
+                position: position,
+                title: "Uluru",
+            });
+            }
+
+            initMap();
+      </script>   -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/hero-slider.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #6c9dac;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+    
+            .form-container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 400px;
+            }
+    
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+    
+            input, select {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+    
+            button {
+                width: 100px;
+            height: 50px; 
+            background-color: #3498db; 
+            border: none;
+            color: #ffffff; 
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 25px; 
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            }
+    
+            .results-container {
+                margin-top: 20px;
+            }
+    
+            .user-card {
+                background-color: #fff;
+                padding: 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+    
+            .select-button {
+                background-color: #3498db;
+                color: white;
+                padding: 5px;
+                cursor: pointer;
+            }
+         
+        </style>
+
+
+    </head>
+<body>
+
+<form>
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand scroll-top home-page"><em>Commun</em>Deliver</a>
+                </div>
+                <div id="main-nav" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" data-id="status">Status</a></li>
+                        <li><a href="{% url 'logout' %}" data-id="logout">Logout</a></li>
+                  
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="form-container">
+        <h1>Post Availability</h1>
+        <form>
+            <label for="start">Start Time:</label>
+            <input type="time" id="start" class="convtime" name="start" required>
+
+            <label for="endtime">End Time:</label>
+            <input type="time" id="endtime" class="convtime" name="endtime" required>
+
+            <label for="start-route">Start Location:</label>
+            <input type="text" id="start-route" name="start-route" required>
+
+            <label for="end-route">End Location:</label>
+            <input type="text" id="end-route" name="end-route" required>
+
+            <button type="button" id="add-avail">Add</button>
+</form>
+
+<div class="results-container" id="results-container">
+   
+</div>
+</body>
+
+<script>
+    $(document).ready(function () {
+
+        // $('.convtime').on('change',function(){
+        //     var timeInput = $('.convtime');
+        //     var formattedTIme = format12HourTime(timeInput.val());
+        //     timeInput.val(formattedTime);
+        // });
+
+        // function formatted12HourTime(time){
+        //     var timeArray = tie.split(':');
+        //     var hours = parseInt(timeArray[0]);
+        //     var minutes =  timeArray[1];
+        //     var period = (hours >= 12)? 'PM' : 'AM';
+        //     hours = (hours % 12 ) || 12;
+        //     return hours + ":" + minutes + " " + period;
+        // }
+        $("#add-avail").click(function(){
+        var strt = $('#start').val();
+        var end = $('#endtime').val();
+        var start_route = $('#start-route').val();
+        var end_route = $('#end-route').val();
+            $.ajax({
+                url:'/add_availability/',
+                method:'POST',
+                data:{
+                    "start_time":strt,
+                    "end_time":end,
+                    "start_route":start_route,
+                    "end_route":end_route,
+                }, 
+                success:function(resp){
+                    // alert(resp);
+                    if(resp.status == 'success'){
+                        alert(resp.message);
+                        window.location.href='{% url "post_avail" %}'
+                    } else{
+                        alert(resp.message);
+                        window.location.assign('#');
+                    }
+
+                }
+            });
+        });
+      
+
+    });
+</script>
+
+</html>
