@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "CommunDeliver.urls"
 
-GOOGLE_MAPS_API_KEY = "AIzaSyBxuWkiItG0F0A7rmQ_Tn8Umgvsl3SozMM"
+GOOGLE_MAPS_API_KEY = "SDGGDeukjaknk"
 
 TEMPLATES = [
     {
